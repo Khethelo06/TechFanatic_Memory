@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="registration.css">
+    <script defer src="registration.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="form" action="/">
+            <h1>Registration</h1>
+            <div class="input-control">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" placeholder=" Enter Username">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" placeholder="Enter Email">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="computer">Purpose of computer</label>
+                <select name="computer" id="computer" placeholder="Enter here">
+                    <option value="personal">Personal</option>
+                    <option value="industry">Industry/Company</option>
+                </select>
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">Password</label>
+                <input id="password"name="password" type="password" placeholder="Enter Password">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password2">Password again</label>
+                <input id="password2"name="password2" type="password" placeholder="Confirm Password">
+                <div class="error"></div>
+            </div>
+            <button type="submit" id="btnSignUp">Sign Up</button>
+            <div class="login-container">
+                <a href="">Log In</a>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBPHyNMvImx1PaNvnUnm1Mdt2rZnJ9h2wg",
+      authDomain: "techfanatic-authentication.firebaseapp.com",
+      databaseURL: "https://techfanatic-authentication-default-rtdb.firebaseio.com",
+      projectId: "techfanatic-authentication",
+      storageBucket: "techfanatic-authentication.appspot.com",
+      messagingSenderId: "358079639810",
+      appId: "1:358079639810:web:1b588c62489642317d521b"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app); 
+    const auth = getAuth();
+
+    const btnSignUp = document.getElementById('btnSignUp');
+
+    btnSignUp.addEventListener('click', (e) => {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password2').value;
+        var email = document.getElementById('email').value;
+        var computer = document.getElementById('computer').value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+
+                set(ref(database, 'users/' + user.uid),{
+                    username: username,
+                    email: email,
+                    computer: computer
+                })   
+                alert("User created!")
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+                // ..
+            });
+
+            window.location.href = '/Framework/Home/home.html'
+    });
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="message.css">
+    <link rel="stylesheet" href="/Chatbot2/chatbot2.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <span><p class="user">Welcome Khethelo</p></span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+     
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+            <div class="navbar-menu">
+                <ul>
+                    <li >
+                        <a href="/Framework/Home/home.html" style="text-decoration: none; color: black">
+                            <box-icon name='home-alt-2' type='solid' ></box-icon>
+                            <div >Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Framework/Problem/problem.html" style="text-decoration: none; color: black">
+                            <box-icon name='wrench'></box-icon>
+                            <div>Problem</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Framework/Message/message.html" style="text-decoration: none; color: black">
+                            <box-icon type='solid' name='message-dots'></box-icon>
+                            <div>Message</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Framework/About/about.html" style="text-decoration: none; color: black">
+                            <box-icon name='question-mark'></box-icon>
+                            <div>About Us</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="charts">
+
+          <div class="charts-card">
+            <p class="chart-title">RAM</p>
+            <div class="ram">
+                <div class="percent">
+                    <p>75%</p>
+                </div>
+                <div class="scale">
+                    -------------
+                </div>
+            </div>
+            <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <p class="chart-title">Chat With Us</p>
+              <div class="full-chat-block">
+                  <!-- Message Container -->
+                  <div class="outer-container">
+                      <div class="chat-container">
+                          <!-- Messages -->
+                          <div id="chatbox">
+                              <h5 id="chat-timestamp"></h5>
+                              <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                          </div>
+  
+                          <!-- User input box -->
+                          <div class="chat-bar-input-block">
+                              <div id="userInput">
+                                  <input id="textInput" class="input-box" type="text" name="msg"
+                                      placeholder="Tap 'Enter' to send a message">
+                                  <p></p>
+                              </div>
+  
+                              <div class="chat-bar-icons">
+                                  <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                      onclick="heartButton()"></i>
+                                  <i id="chat-icon" style="color: #333; cursor: pointer;" class="fa fa-fw fa-send"
+                                      onclick="sendButton()"><box-icon name='send'></box-icon></i>
+                              </div>
+                          </div>
+  
+                          <div id="chat-bar-bottom">
+                              <p></p>
+                          </div>
+  
+                      </div>
+                  </div>
+  
+              </div>
+            <div id="area-chart"></div>
+          </div>
+
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/Chatbot2/chatbot2.js"></script>
+    <script src="/Chatbot2/response.js"></script>
+    <script src="message.js"></script>
+  </body>
+</html>

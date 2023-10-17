@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form {
+    width: 450px;
+    padding: 10px 50px;
+    background: rgb(99, 99, 230);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#form h1 {
+    color: black;
+    text-align: center;
+}
+
+#form button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background: black;
+    height: 2.5rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 1rem 1.2rem;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0rem;
+    border-radius: 3px;
+    max-height: 65px;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.input-control label{
+    color: black;
+    font-weight: 600;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-control option {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-control select {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}
+
+.login-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.login-container a{
+    font-size: 1rem;
+    color: white;
+}
+
