@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="problem.css">
+    <link rel="stylesheet" href="home.css">
   </head>
   <body>
     <div class="grid-container">
@@ -25,7 +25,7 @@
           <span><p class="user"></p></span>
         </div>
         <div class="header-right">
-          <a href="/Framework/Log In/logIn.html"><span class="material-icons-outlined">account_circle</span></a>
+          <span class="material-icons-outlined">account_circle</span>
         </div>
       </header>
       <!-- End Header -->
@@ -71,7 +71,7 @@
             <p class="chart-title">RAM</p>
             <div class="ram">
                 <div class="percent">
-                    <p>75%</p>
+                    <p class="mem_percent"></p>
                 </div>
                 <div class="scale">
                     -------------
@@ -81,10 +81,8 @@
           </div>
 
           <div class="charts-card">
-            <p class="chart-title">View Performance Problems</p>
-            <div id="area-chart">
-              <textarea id="text_area" maxlength="50" class="text_area" placeholder="Type in here"></textarea>
-            </div>
+            <p class="chart-title">Purchase and Sales Orders</p>
+            <div id="area-chart"></div>
           </div>
 
         </div>
@@ -97,60 +95,7 @@
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
-    <script src="problem.js"></script>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-      import { getDatabase, ref, child, get, push, update} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
-
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyBPHyNMvImx1PaNvnUnm1Mdt2rZnJ9h2wg",
-        authDomain: "techfanatic-authentication.firebaseapp.com",
-        databaseURL: "https://techfanatic-authentication-default-rtdb.firebaseio.com",
-        projectId: "techfanatic-authentication",
-        storageBucket: "techfanatic-authentication.appspot.com",
-        messagingSenderId: "358079639810",
-        appId: "1:358079639810:web:1b588c62489642317d521b"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
-
-      var user_id = localStorage.getItem('userID');
-      var userID = Number(user_id);
-
-      var information = [];
-
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, 'users')).then((snapshot) => {
-          
-          snapshot.forEach(childSnapshot => {
-            var data = childSnapshot.val();
-            var userID_database = data.userID;
-            console.log(userID);
-            console.log(userID_database);
-            if (userID === userID_database){
-              var solutionType = data.solution;
-              if (solutionType != "none"){
-                information.push('Problem: ' + solutionType +'\n');
-              }
-
-              var messageType = data.message;
-              if (messageType != "none"){
-                information.push('Message reply: ' + messageType +'\n');
-              }
-
-              
-              console.log(information);
-              document.getElementById('text_area').value = information;
-            }
-          });
-      });
-    </script>
+    <script src="home.js"></script>
+    <!-- <script src="/Transfer/javascript.js"></script> -->
   </body>
 </html>

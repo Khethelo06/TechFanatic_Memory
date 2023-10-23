@@ -39,21 +39,22 @@
             </div>
             <div class="input-control">
                 <label for="password2">Password again</label>
-                <input id="password2"name="password2" type="password" placeholder="Confirm Password">
+                <input id="password2" name="password2" type="password" placeholder="Confirm Password">
                 <div class="error"></div>
             </div>
             <button type="submit" id="btnSignUp">Sign Up</button>
             <div class="login-container">
-                <a href="">Log In</a>
+                <a href="/Framework/Log In/logIn.html">Log In</a>
             </div>
         </form>
     </div>
 </body>
 <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -70,38 +71,59 @@
   
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app); 
+    const database = getDatabase(app);
     const auth = getAuth();
 
     const btnSignUp = document.getElementById('btnSignUp');
+    
+    
 
     btnSignUp.addEventListener('click', (e) => {
+
         var username = document.getElementById('username').value;
-        var password = document.getElementById('password2').value;
         var email = document.getElementById('email').value;
+        var password = document.getElementById('password2').value;
         var computer = document.getElementById('computer').value;
+        var ram = 0;
+        var status = "good";
+        var message = "none";
+        var solution = "none";
+        var check;
+        
+        localStorage.setItem('username', username);
 
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-
-                set(ref(database, 'users/' + user.uid),{
-                    username: username,
-                    email: email,
-                    computer: computer
-                })   
-                alert("User created!")
-                // ...
+        .then((userCredential) => {
+            // Signed up 
+            var userID = Math.floor(Math.random()*5001);
+            localStorage.setItem('userID', userID);
+            console.log(userID)
+            alert('user created!' + userID);
+            
+            set(ref(database, 'users/' + userID),{
+                userID: userID,
+                username: username,
+                email: email, 
+                computer: computer,
+                ram: ram,
+                status: status,
+                message: message,
+                solution: solution
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
-                // ..
-            });
+               
+           
 
-            window.location.href = '/Framework/Home/home.html'
-    });
-</script>
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(errorMessage);
+            // ..
+        });
+        
+
+    })
+  
+  </script>
 </html>

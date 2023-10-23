@@ -3,13 +3,13 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #e6e8ed;
+    color: #666666;
     font-family: "Montserrat", sans-serif;
   }
   
   .material-icons-outlined {
     vertical-align: middle;
     line-height: 1px;
-    cursor: pointer;
   }
   
   .text-primary {
@@ -35,14 +35,63 @@ body {
   .font-weight-bold {
     font-weight: 600;
   }
+
+  .navbar-menu{
+    width: 100%;
+    display: flex;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+    border-radius: 20px;
+    background-color: blue;
+    margin: 20px 0px;
+    
+}
+
+.navbar-menu ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.navbar-menu ul li a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-menu ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    width: 50%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding: 1rem auto;
+    transition: all ease-in-out 0.3s;
+}
+
+.navbar-menu ul li:hover{
+    background-color: aqua;
+    transition: all ease-in-out 0.5s;
+    box-shadow: 2px 5px 2px 2px rgba(0, 0, 0, 0.3);
+}
   
   .grid-container {
     display: grid;
-    grid-template-columns: 260px 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 3fr;
     grid-template-areas:
-      "sidebar header header header"
-      "sidebar main main main";
+      "header header header"
+      "main main main";
     height: 100vh;
   }
   
@@ -64,91 +113,83 @@ body {
     display: none;
   }
   
-  
-  /* ---------- SIDEBAR ---------- */
-  
-  #sidebar {
-    grid-area: sidebar;
-    height: 100%;
-    background-color: #21232d;
-    color: white;
-    overflow-y: auto;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-  }
-  
-  .sidebar-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px 20px 20px;
-    margin-bottom: 30px;
-  }
-  
-  .sidebar-title > span {
-    display: none;
-  }
-  
-  .sidebar-brand {
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  
-  .sidebar-list {
-    padding: 0;
-    margin-top: 15px;
-    list-style-type: none;
-  }
-  
-  .sidebar-list-item {
-    padding: 20px 20px 20px 20px;
-  }
 
-  
-  .sidebar-list-item:hover {
-    background-color: rgb(0, 64, 201);
-    cursor: pointer;
-  }
-  
-  .sidebar-list-item > a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .sidebar-responsive {
-    display: inline !important;
-    position: absolute;
-    /*
-      the z-index of the ApexCharts is 11
-      we want the z-index of the sidebar higher so that
-      the charts are not showing over the sidebar 
-      on small screens
-    */
-    z-index: 12 !important;
-  }
-  
   
   /* ---------- MAIN ---------- */
   
   .main-container {
     grid-area: main;
     overflow-y: auto;
-    padding: 20px 20px;
+    padding: 2rem 10rem;
   }
   
   .main-title {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   
   .main-title > p {
     font-size: 20px;
   }
   
+  .main-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 25px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border: 1px solid #d2d2d3;
+    border-radius: 5px;
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card:first-child {
+    border-left: 7px solid #246dec;
+  }
+  
+  .card:nth-child(2) {
+    border-left: 7px solid #f5b74f;
+  }
+  
+  .card:nth-child(3) {
+    border-left: 7px solid #367952;
+  }
+  
+  .card:nth-child(4) {
+    border-left: 7px solid #cc3c43;
+  }
+  
+  .card > span {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .card-inner > p {
+    font-size: 18px;
+  }
+  
+  .card-inner > span {
+    font-size: 35px;
+  }
+  
   .charts {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 20px;
   }
   
@@ -170,34 +211,7 @@ body {
     font-size: 22px;
     font-weight: 600;
   }
-
-  .area-chart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 2rem;
-  }
-
-  .area-chart span{
-    font-size: 7rem;
-    color: #246dec;
-  }
-
-  .bar-chart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 2rem;
-  }
   
-  .bar-chart span{
-    font-size: 7rem;
-    color: #246dec;
-  }
   
   /* ---------- SCROLLBARS ---------- */
   
@@ -233,6 +247,12 @@ body {
         "header"
         "main";
     }
+
+    .main-container {
+        grid-area: main;
+        overflow-y: auto;
+        padding: 40px 40px;
+      }
   
     #sidebar {
       display: none;
@@ -240,16 +260,18 @@ body {
   
     .menu-icon {
       display: inline;
-      cursor: pointer;
     }
   
-    .sidebar-title > span {
-      display: inline;
-    }
+    
   }
   
   /* Small <= 768px */
   @media screen and (max-width: 768px) {
+    .main-cards {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 0;
+    }
   
     .charts {
       grid-template-columns: 1fr;
@@ -263,26 +285,3 @@ body {
       display: none;
     }
   }
-
-  .collapse_link{
-    justify-self: flex-end;
-    color: white;
-    transition: 0.5s;
-}
-
-.collapse_menu{
-    padding: 0.75rem 2.25rem;
-}
-
-.collapse_sublink{
-    display: block;
-    padding: .3rem 0rem;
-    text-decoration: none;
-    color: white;
-}
-
-.collapse_sublink:hover{
-    color: white;
-    transition: 0.5s 
-}
-

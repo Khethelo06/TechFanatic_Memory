@@ -14,8 +14,6 @@ btnLogin.onclick = function(){
     btnLogin.classList.remove("disabled");
     btnSignin.classList.add("disabled");
 
-    const usernameValue = username.value;
-    localStorage.setItem('username', usernameValue);
     window.location.href = '/Framework/Home/home.html'
 }
 

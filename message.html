@@ -26,7 +26,7 @@
           <span><p class="user">Welcome Khethelo</p></span>
         </div>
         <div class="header-right">
-          <span class="material-icons-outlined">account_circle</span>
+          <a href="/Framework/Log In/logIn.html"><span class="material-icons-outlined">account_circle</span></a>
         </div>
       </header>
       <!-- End Header -->
@@ -83,41 +83,18 @@
 
           <div class="charts-card">
             <p class="chart-title">Chat With Us</p>
-              <div class="full-chat-block">
-                  <!-- Message Container -->
-                  <div class="outer-container">
-                      <div class="chat-container">
-                          <!-- Messages -->
-                          <div id="chatbox">
-                              <h5 id="chat-timestamp"></h5>
-                              <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                          </div>
-  
-                          <!-- User input box -->
-                          <div class="chat-bar-input-block">
-                              <div id="userInput">
-                                  <input id="textInput" class="input-box" type="text" name="msg"
-                                      placeholder="Tap 'Enter' to send a message">
-                                  <p></p>
-                              </div>
-  
-                              <div class="chat-bar-icons">
-                                  <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
-                                      onclick="heartButton()"></i>
-                                  <i id="chat-icon" style="color: #333; cursor: pointer;" class="fa fa-fw fa-send"
-                                      onclick="sendButton()"><box-icon name='send'></box-icon></i>
-                              </div>
-                          </div>
-  
-                          <div id="chat-bar-bottom">
-                              <p></p>
-                          </div>
-  
-                      </div>
-                  </div>
-  
-              </div>
-            <div id="area-chart"></div>
+            <textarea id="text_area" maxlength="50" class="text_area" placeholder="Type in here"></textarea>
+            <div class="counter_container">
+                <p>
+                    Total characters: <span class="total_counter" id="total_counter">30</span>
+                </p>
+                <p>
+                    Remaining characters: <span class="remaining_counter" id="remaining_counter">20</span>
+                </p>
+            </div>
+            <div class="btn-field">
+              <button type="submit" id="btnSubmit">submit</button>
+            </div>
           </div>
 
         </div>
@@ -130,8 +107,73 @@
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
-    <script src="/Chatbot2/chatbot2.js"></script>
-    <script src="/Chatbot2/response.js"></script>
     <script src="message.js"></script>
+
+    <script type="module">
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+      import { getDatabase, ref, child, get, push, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBPHyNMvImx1PaNvnUnm1Mdt2rZnJ9h2wg",
+        authDomain: "techfanatic-authentication.firebaseapp.com",
+        databaseURL: "https://techfanatic-authentication-default-rtdb.firebaseio.com",
+        projectId: "techfanatic-authentication",
+        storageBucket: "techfanatic-authentication.appspot.com",
+        messagingSenderId: "358079639810",
+        appId: "1:358079639810:web:1b588c62489642317d521b"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+
+      const btnSubmit = document.getElementById('btnSubmit');
+
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, 'users')).then((snapshot) => {
+        var userID_database;
+
+
+      btnSubmit.addEventListener('click', (e) =>{
+        
+        var user_id = localStorage.getItem('userID');
+        let message = document.getElementById('text_area').value;
+        var userID = Number(user_id);
+        
+        
+
+        snapshot.forEach(childSnapshot => {
+          console.log(childSnapshot.val());
+          var data = childSnapshot.val();
+          userID_database = data.userID;
+          console.log(userID_database);
+          console.log(userID);
+
+          
+          
+          if (userID_database === userID){
+            console.log('Hello world')
+            update(ref(database, 'users/' + userID_database),{
+              message: message
+            })
+            .then(() =>{
+              alert("Updated")
+            })
+            .catch((error) =>{
+              alert("Unsuccessful")
+            })
+          }else{
+            console.log("Not equal")
+          }
+        });
+      })
+
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,390 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e6e8ed;
+  font-family: "Montserrat", sans-serif;
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+  cursor: pointer;
+}
+
+.text-primary {
+  color: #666666;
+}
+
+.text-blue {
+  color: #246dec;
+}
+
+.text-red {
+  color: #cc3c43;
+}
+
+.text-green {
+  color: #367952;
+}
+
+.text-orange {
+  color: #f5b74f;
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    "sidebar header header header"
+    "sidebar main main main";
+  height: 100vh;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.header {
+  grid-area: header;
+  height: 70px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #21232d;
+  color: white;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+}
+
+
+.sidebar-list-item:hover {
+  background-color: rgb(0, 64, 201);
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    the z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-title > p {
+  font-size: 20px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.charts-card {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-sizing: border-box;
+  -webkit-column-break-inside: avoid;
+  border: 1px solid #d2d2d3;
+  border-radius: 5px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #a5aaad;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4f35a1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a5aaad;
+}
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+    cursor: pointer;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+
+/* Small <= 768px */
+@media screen and (max-width: 768px) {
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+@media screen and (max-width: 576px) {
+  .header-left {
+    display: none;
+  }
+}
+
+.collapse_link{
+  justify-self: flex-end;
+  color: white;
+  transition: 0.5s;
+}
+
+.collapse_menu{
+  padding: 0.75rem 2.25rem;
+}
+
+.collapse_sublink{
+  display: block;
+  padding: .3rem 0rem;
+  text-decoration: none;
+  color: white;
+}
+
+.collapse_sublink:hover{
+  color: white;
+  transition: 0.5s 
+}
+
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+section {
+position: fixed;
+height: 100%;
+width: 100%;
+background: #e3f2fd;
+}
+button {
+font-size: 18px;
+font-weight: 400;
+color: #fff;
+padding: 14px 22px;
+border: none;
+background: #4070f4;
+border-radius: 6px;
+cursor: pointer;
+}
+button:hover {
+background-color: #265df2;
+}
+button.show-modal,
+.modal-box {
+position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+section.active .show-modal {
+display: none;
+}
+.overlay {
+position: fixed;
+height: 100%;
+width: 100%;
+background: rgba(0, 0, 0, 0.3);
+opacity: 0;
+pointer-events: none;
+}
+section.active .overlay {
+opacity: 1;
+pointer-events: auto;
+}
+.modal-box {
+display: flex;
+flex-direction: column;
+width: 80%;
+padding: 30px 60px;
+border-radius: 24px;
+background-color: #fff;
+opacity: 0;
+pointer-events: none;
+transition: all 0.3s ease;
+transform: translate(-50%, -50%) scale(1.2);
+}
+section.active .modal-box {
+opacity: 1;
+pointer-events: auto;
+transform: translate(-50%, -50%) scale(1);
+}
+.modal-box i {
+font-size: 70px;
+color: #4070f4;
+}
+.modal-box h2 {
+margin-top: 20px;
+font-size: 25px;
+font-weight: 500;
+color: #333;
+}
+.modal-box h3 {
+font-size: 16px;
+font-weight: 400;
+color: #333;
+text-align: center;
+}
+.modal-box .buttons {
+margin-top: 25px;
+display: flex;
+align-self: center;
+}
+.modal-box button {
+font-size: 14px;
+padding: 6px 12px;
+margin: 0 10px;
+}
+
+.text_area{
+  resize: none;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: cursive;
+  font-size: 16px;
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0rem;
+  border-radius: 3px;
+  max-height: 100px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.input-control label{
+  color: black;
+  font-weight: 600;
+}
+
+.input-control input {
+  border: 2px solid #f0f0f0;
+border-radius: 4px;
+display: block;
+font-size: 12px;
+padding: 10px;
+width: 100%;
+}
+

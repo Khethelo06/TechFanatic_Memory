@@ -170,34 +170,7 @@ body {
     font-size: 22px;
     font-weight: 600;
   }
-
-  .area-chart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 2rem;
-  }
-
-  .area-chart span{
-    font-size: 7rem;
-    color: #246dec;
-  }
-
-  .bar-chart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 2rem;
-  }
   
-  .bar-chart span{
-    font-size: 7rem;
-    color: #246dec;
-  }
   
   /* ---------- SCROLLBARS ---------- */
   
@@ -284,5 +257,134 @@ body {
 .collapse_sublink:hover{
     color: white;
     transition: 0.5s 
+}
+
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+section {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #e3f2fd;
+}
+button {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 14px 22px;
+  border: none;
+  background: #4070f4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #265df2;
+}
+button.show-modal,
+.modal-box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+section.active .show-modal {
+  display: none;
+}
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+}
+section.active .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 30px 60px;
+  border-radius: 24px;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+section.active .modal-box {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.modal-box i {
+  font-size: 70px;
+  color: #4070f4;
+}
+.modal-box h2 {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  color: #333;
+}
+.modal-box h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+.modal-box .buttons {
+  margin-top: 25px;
+  display: flex;
+  align-self: center;
+}
+.modal-box button {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 0 10px;
+}
+
+.text_area{
+    resize: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: cursive;
+    font-size: 16px;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0rem;
+    border-radius: 3px;
+    max-height: 100px;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.input-control label{
+    color: black;
+    font-weight: 600;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
 }
 

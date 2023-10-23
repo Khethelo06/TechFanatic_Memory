@@ -17,15 +17,13 @@ function closeSidebar() {
   }
 }
 
+const linkCollapse = document.getElementsByClassName('collapse_link');
+var i;
 
+for (i=0; i<linkCollapse.length; i++){
+    linkCollapse[i].addEventListener('click', function(){
+        const collapseMenu = this.nextElementSibling;
+        collapseMenu.classList.toggle('showCollapse');
+    })
+}
 
-const btnComputer = document.getElementById('btnComputer');
-const btnAnalytics = document.getElementById('btnAnalytics');
-
-btnComputer.addEventListener('click', () =>{
-  window.location.href="/Framework/Computer/computer.html";
-});
-
-btnAnalytics.addEventListener('click', () =>{
-  window.location.href="/Framework/Analytics/analytics.html";
-});

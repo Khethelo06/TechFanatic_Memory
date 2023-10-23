@@ -170,34 +170,7 @@ body {
     font-size: 22px;
     font-weight: 600;
   }
-
-  .area-chart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 2rem;
-  }
-
-  .area-chart span{
-    font-size: 7rem;
-    color: #246dec;
-  }
-
-  .bar-chart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 2rem;
-  }
   
-  .bar-chart span{
-    font-size: 7rem;
-    color: #246dec;
-  }
   
   /* ---------- SCROLLBARS ---------- */
   
